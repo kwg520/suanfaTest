@@ -1,0 +1,44 @@
+
+AMS每个安卓版本都在迭代
+android 11
+
+AMS  :  Activity  service  provider  broadcastReceive  管理这些 android 10之前
+
+android 10 : Atms : ActivityTaskManagerService
+在systemserve  中启动 run() 方法里面  会启动90多个服务  里面有 startBootStrapServices  里面包含了AMS，ATMS的启动 借助与
+systemServiceManager.startService(A..
+systemServe  借助于 systemServiceManager 管理 90多个 服务
+这些个服务全部拓展与stub 即 拓展自IBinder,AMS 和ATMS里面没有继承SystemService ，通过静态内部类的方式用lifecycle extends SystemService
+所有的服务继承于同一个类 SystemService 通过start(name) 启动 stop(name) 停止  restart(name)
+AMS ATMS 最终给 Application 使用
+
+binder : ASM 和ATMS binder都给了 ServiceManager(进程）
+
+1.AMS启动流程
+2.Application 启动流程
+3.Activity 启动和管理流程
+
+AMS app运行的信息 进程状态 内存信息 图像信息  数据库信息 cpu信息 缓存信息
+    adb 命令进行dump
+
+ socket ? 参数
+ 进程启动  ProcessRecord   记录进程的信息 uid  iapplicationthread
+          ProcessList   记录所有正在运行的进程 ProcessRecord
+
+ appruntime  - > native zygoteinit 调用jni  onzygoteInit()  binder  open binder 驱动  为什么构建binder
+
+ binder 里面多个线程池   applicationthread extend Iapplication.stub
+
+if(!ArrayUtis.isEmpty(data.providers){
+   installContentProviders(app,data.providers);
+}
+
+执行application  attachBaseContext  -> application.onCreate
+准备 processRecord   updateLRUProcess
+AMS:
+   activityStackSuperVisor : 封装clientTransaction
+Activity  解析activity 参数     ActivityStack activityRecord
+
+
+ActivityStarter :解析activity启动参数
+ActivityController

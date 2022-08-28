@@ -1,0 +1,7 @@
+1.android 事件发布/订阅框架
+2.事件传递可用于Android 四大组件通讯
+3.EventBus 的优点是代码简洁，使用简单，并将事件发布和订阅解耦
+
+looper 是MessageQueue 的管家， handle.sendMessage    hanleMessage(msg)
+looper.loop
+@subscibe(threaMode = ThreadMode.Main)

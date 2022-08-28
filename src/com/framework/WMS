@@ -1,0 +1,9 @@
+一、WMS简介
+WMS（WindowManagerService）是一个重要的系统服务，用于窗口管理，由SystemService启动，发生异常时自动重启，直到系统关机时才能退出。
+在WMS没有运行之前，开机动画由BootAnimation直接通过OpenGL ES与SurfaceFlinger的配合来完成。
+
+
+Android WMS的理解
+1.什么是WMS
+2.主要用来干嘛的
+3.原理

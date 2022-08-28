@@ -1,0 +1,30 @@
+1.taskAffinity 和allowTaskReparenting的用途 ([əˈfɪnəti])
+taskAffinity用于指定当前Activity(activity1)所关联的Task，allowTaskReparenting用于配置是否允许该activity可以更换从属task，
+通常情况二者连在一起使用，用于实现把一个应用程序的Activity移到另一个应用程序的Task中。
+
+allowTaskReparenting用来标记Activity能否从启动的Task移动到taskAffinity指定的Task，默认是继承至application中的allowTaskReparenting=false，
+如果为true，则表示可以更换；false表示不可以。
+
+
+Android的进程间通信方式。
+①Android为何要自己搞一个binder，使用linux原有的通信方式不行么？（安全、性能好，方便易用）
+②binder通信的内存大小限制。（1M和128k）
+③binder的架构（Application、ServiceManager、系统Service、binder驱动），以获取系统服务的过程举例分析。
+④Application#onCreate里面可以使用binder服务么(可以)？Application的binder机制是何时启动的（zygote在fork好应用进程后，会给应用启动binder机制）？binder机制启动的几个关键步骤。
+⑤binder线程池默认最大数量（15）？
+⑥binder和AIDL。
+⑦oneway。
+oneway 不返回结果，不阻塞主线程
+in	数据从 caller传到 callee，callee 调用结束后不会把数据写回 caller 中。
+out	caller 数据不会传入 callee（因为就没有写数据）, callee 调用结束后（不管数据有没有更新）会把数据写回 caller 中。
+inout	数据从 caller 传到 callee，callee 调用结束后（不管数据有没有更新）会把数据写回 caller 中。
+
+in 意思 我从a进程发送到b,在b中改变后，a中的并未改变  结果并未流向a
+
+
+
+在java语言中，什么对象可作为GCRoot的对象？
+a. java虚拟机栈中的引用的对象。
+b.方法区中的类静态属性引用的对象。 （一般指被static修饰的对象，加载类的时候就加载到内存中。）
+c.方法区中的常量引用的对象。
+d.本地方法栈中的JNI（native方法）引用的对象
